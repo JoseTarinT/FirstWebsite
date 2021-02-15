@@ -4,11 +4,12 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return "This is the homepage"
+    return render_template("home.html")
 
 @app.route('/about')
 def about():
-    return "This is the about page"
+    return render_template("about.html")
 
 if __name__=="__main__":
-    app.run(debug=True)
+    app.run(debug=True) # 'debug=True' will print out possible Python errors on the web page helping us trace the errors.
+                        # However, in a production environment, you would want to set it to False as to avoid any security issues.
