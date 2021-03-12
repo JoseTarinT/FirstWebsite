@@ -1,0 +1,36 @@
+{%extends "layout.html"%}
+{%block content%}
+<div class="succes">
+    <h1>You have registered</h1>
+    <p>
+       Check your email to see the ling of the final ou have chosen
+        <ul>
+    {% if year == '2009-2010' %}
+    <li>{{ links[0] }} </li>
+    {% elif year == '2010-2011' %}
+    <li>{{ links[1] }} </li>
+    {% elif year == '2011-2012' %}
+    <li>{{ links[2] }} </li>
+    {% elif year == '2012-2013' %}
+    <li>{{ links[3] }} </li>
+    {% elif year == '2013-2014' %}
+    <li>{{ links[4] }} </li>
+    {% elif year == '2014-2015' %}
+    <li>{{ links[5] }} </li>
+    {% elif year == '2015-2016' %}
+    <li>{{ links[6] }} </li>
+    {% elif year == '2016-2017' %}
+    <li>{{ links[7] }} </li>
+    {% elif year == '2017-2018' %}
+    <li>{{ links[8] }} </li>
+    {% elif year == '2018-2019' %}
+    <li>{{ links[9] }} </li>
+    {% elif year == '2019-2020' %}
+    <li>{{ links[10] }} </li>
+    {% else %}
+    <li>{{ links[11] }}</li>
+    {% endif %}
+</ul>
+    </p>
+</div>
+{%endblock%}
