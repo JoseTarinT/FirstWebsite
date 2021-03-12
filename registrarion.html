@@ -1,6 +1,6 @@
 {%extends "layout.html"%}
 {%block content%}
-<div class="register">
+<div class="registration">
      <h1>Register to watch last year´s final</h1>
      <form action="/register" method="post">
           <input name="email" placeholder="Email" type="text">
@@ -17,6 +17,7 @@
                <option value="2018-2019">2018-2019</option>
                <option value="2019-2020">2019-2020</option>
           </select>
+          <input type="submit" value="Register">
      </form>
 </div>
 {%endblock%}
