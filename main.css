@@ -47,7 +47,15 @@ div.home {
           border-radius: 6px;
 }
 
-div.about {
+div.registration {
+  padding: 10px 0 30px 0;
+  background-color: #000080;
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+}
+
+div.succes {
   padding: 10px 0 30px 0;
   background-color: #000080;
   -webkit-border-radius: 6px;
