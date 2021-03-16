@@ -1,3 +1,5 @@
+import os
+import smtplib
 from flask import Flask, render_template, request
 
 # Configure app
@@ -24,8 +26,37 @@ def register():
              "https://www.youtube.com/watch?v=GfIIiHcOHCE"]
     if not email or not year:
         return "failure"
+    if year == '2009-2010':
+        text = ''.join(["This is the link of the final of ", year , links[0]])
+    elif year == '2010-2011':
+        text = ''.join(["This is the link of the final of ", year , links[1]])
+    elif year == '2011-2012':
+        text = ''.join(["This is the link of the final of ", year + links[2]])
+    elif year == '2012-2013':
+        text = ''.join(["This is the link of the final of ", year + links[3]])
+    elif year == '2013-2014':
+        text = ''.join(["This is the link of the final of ", year + links[4]])
+    elif year == '2014-2015':
+        text = ''.join(["This is the link of the final of ", year + links[5]])
+    elif year == '2015-2016':
+        text = ''.join(["This is the link of the final of ", year + links[6]])
+    elif year == '2016-2017':
+        text = ''.join(["This is the link of the final of ", year + links[7]])
+    elif year == '2017-2018':
+        text = ''.join(["This is the link of the final of ", year + links[8]])
+    elif year == '2018-2019':
+        text = ''.join(["This is the link of the final of ", year + links[9]])
     else:
-        return render_template("succes.html", year = year, links = links)
+        text = ''.join(["This is the link of the final of ", year + links[10]])
+    
+    # Send email to the user after registration
+    subject = "Subject: You are registered."
+    message = '{}\n\n{}'.format(subject, text)
+    server = smtplib.SMTP("smtp-mail.outlook.com", 587)
+    server.starttls()
+    server.login("joseluis_tt88@hotmail.com", os.getenv("EMPASSWORD")) # os.getenv() allows to access data store in local enviroment in your computer without show publicly.
+    server.sendmail("joseluis_tt88@hotmail.com", email, message) # Here the 1º email is the 'from' email; 'email' is the variable that stores the email that user input and it is the 'to' email.
+    return render_template("succes.html", year=year, links=links)
     
 
 if __name__=="__main__":
