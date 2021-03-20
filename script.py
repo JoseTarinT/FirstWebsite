@@ -1,10 +1,13 @@
 import os
 import smtplib
+import csv
 from flask import Flask, render_template, request
 
 # Configure app
-
 app = Flask(__name__)
+
+# Register users
+users1 = []
 
 @app.route('/')
 def home():
@@ -25,7 +28,17 @@ def register():
              "https://www.youtube.com/watch?v=rtFGpfrdlMI", "https://www.youtube.com/watch?v=8xDIPTOGrwY",
              "https://www.youtube.com/watch?v=GfIIiHcOHCE"]
     if not email or not year:
-        return "failure"
+        return render_template("failure.html")
+    
+    # Create CSV and TXT files with user and year registered as data bases.
+    users1.append(f"{email} and {year}")
+    with open('users.csv', "a") as users:
+        writer = csv.writer(users)
+        writer.writerow((request.form.get("email"), request.form.get("year")))
+    with open('users.txt', "a") as usersfile:
+        usersfile.write(str(users1))
+    
+    # Create message to send to the users once they register
     if year == '2009-2010':
         text = ''.join(["This is the link of the final of ", year , links[0]])
     elif year == '2010-2011':
